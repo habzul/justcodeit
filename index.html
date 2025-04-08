@@ -3,56 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>My Developer Portfolio</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; background: #f5f5f5; color: #333; }
+    header { background: #1e1e2f; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+    header h1 { font-size: 1.5rem; }
+    nav ul { list-style: none; display: flex; gap: 1rem; }
+    nav ul li a { color: white; text-decoration: none; }
+    .menu-toggle { display: none; cursor: pointer; }
+    main { padding: 2rem; max-width: 1000px; margin: auto; }
+    section { margin-bottom: 4rem; }
+    h2 { margin-bottom: 1rem; color: #1e1e2f; }
+    .hero { text-align: center; margin-top: 2rem; }
+    .hero h2 { font-size: 2rem; }
+    .skills, .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+    .card { background: white; padding: 1rem; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
+    .contact form { display: flex; flex-direction: column; gap: 1rem; }
+    .contact input, .contact textarea { padding: 0.75rem; border: 1px solid #ccc; border-radius: 5px; }
+    .contact button { padding: 0.75rem; background: #1e1e2f; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    footer { text-align: center; padding: 1rem; background: #1e1e2f; color: white; }
+    @media (max-width: 768px) {
+      nav ul { display: none; flex-direction: column; background: #1e1e2f; position: absolute; top: 60px; right: 0; width: 200px; padding: 1rem; }
+      nav ul.show { display: flex; }
+      .menu-toggle { display: block; }
+    }
+  </style>
 </head>
 <body>
   <header>
-    <h1>Hi, I'm [Your Name]</h1>
-    <p>Software Developer | .NET Core | Web App Specialist</p>
+    <h1>[Your Name]</h1>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav>
+      <ul id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I am a software developer with experience in .NET Core, MVC, and building web applications that solve real-world problems.</p>
-  </section>
+  <main>
+    <section class="hero">
+      <h2>Hi, I'm [Your Name]</h2>
+      <p>Software Developer | .NET Core | Web App Specialist</p>
+      <a href="resume.pdf" download class="card">Download Resume</a>
+    </section>
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li>.NET Core</li>
-      <li>ASP.NET MVC</li>
-      <li>C#</li>
-      <li>JavaScript</li>
-      <li>SQL</li>
-      <li>HTML/CSS</li>
-    </ul>
-  </section>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I am a software developer with experience in .NET Core, MVC, and building web applications that solve real-world problems.</p>
+    </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project">
-      <h3>Online Exam System</h3>
-      <p>A web application to evaluate student qualifications for school admission.</p>
-    </div>
-    <div class="project">
-      <h3>Performance Monitor</h3>
-      <p>Tool for measuring web application performance using real-time metrics.</p>
-    </div>
-  </section>
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div class="card">.NET Core</div>
+        <div class="card">ASP.NET MVC</div>
+        <div class="card">C#</div>
+        <div class="card">JavaScript</div>
+        <div class="card">SQL</div>
+        <div class="card">HTML/CSS</div>
+      </div>
+    </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <form action="mailto:youremail@example.com" method="post" enctype="text/plain">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" placeholder="Your Message" required></textarea>
-      <button type="submit">Send</button>
-    </form>
-  </section>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects">
+        <div class="card">
+          <h3>Online Exam System</h3>
+          <p>A web application to evaluate student qualifications for school admission.</p>
+        </div>
+        <div class="card">
+          <h3>Performance Monitor</h3>
+          <p>Tool for measuring web application performance using real-time metrics.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <form action="mailto:youremail@example.com" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </main>
 
   <footer>
     <p>© 2025 [Your Name]. All rights reserved.</p>
   </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('nav-links').classList.toggle('show');
+    }
+  </script>
 </body>
 </html>
